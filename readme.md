@@ -2,12 +2,9 @@
 
 Microservicio de gestión de productos para la plataforma Censudex, implementado con gRPC, MongoDB y Cloudinary.
 
-## 👥 Equipo de Desarrollo
+## 👥 Author
 
-- **Nombre Completo 1** - RUT: XX.XXX.XXX-X
-- **Nombre Completo 2** - RUT: XX.XXX.XXX-X
-- **Nombre Completo 3** - RUT: XX.XXX.XXX-X
-- **Nombre Completo 4** - RUT: XX.XXX.XXX-X *(opcional)*
+- **Rey Valdes Marangunic** - RUT: 19.537.900-9
 
 ## 📋 Índice
 
