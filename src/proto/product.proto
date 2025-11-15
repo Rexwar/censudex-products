@@ -1,0 +1,92 @@
+syntax = "proto3";
+
+package product;
+
+// Servicio de Productos
+service ProductService {
+  // Crear un nuevo producto
+  rpc CreateProduct (CreateProductRequest) returns (ProductResponse);
+  
+  // Obtener lista de todos los productos
+  rpc GetProducts (GetProductsRequest) returns (ProductsListResponse);
+  
+  // Obtener un producto por ID
+  rpc GetProductById (GetProductByIdRequest) returns (ProductResponse);
+  
+  // Actualizar un producto
+  rpc UpdateProduct (UpdateProductRequest) returns (ProductResponse);
+  
+  // Eliminar un producto (soft delete)
+  rpc DeleteProduct (DeleteProductRequest) returns (DeleteProductResponse);
+}
+
+// Mensajes de solicitud
+
+message CreateProductRequest {
+  string name = 1;
+  string description = 2;
+  double price = 3;
+  string category = 4;
+  bytes image = 5; // Imagen en formato base64 o bytes
+  string imageFileName = 6;
+  string adminId = 7; // ID del administrador que crea el producto
+}
+
+message GetProductsRequest {
+  optional string category = 1;
+  optional bool isActive = 2;
+  optional string searchName = 3;
+}
+
+message GetProductByIdRequest {
+  string id = 1;
+}
+
+message UpdateProductRequest {
+  string id = 1;
+  optional string name = 2;
+  optional string description = 3;
+  optional double price = 4;
+  optional string category = 5;
+  optional bytes image = 6;
+  optional string imageFileName = 7;
+  string adminId = 8;
+}
+
+message DeleteProductRequest {
+  string id = 1;
+  string adminId = 2;
+}
+
+// Mensajes de respuesta
+
+message ProductResponse {
+  bool success = 1;
+  string message = 2;
+  optional Product product = 3;
+}
+
+message ProductsListResponse {
+  bool success = 1;
+  string message = 2;
+  repeated Product products = 3;
+  int32 total = 4;
+}
+
+message DeleteProductResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+// Modelo de Producto
+message Product {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  double price = 4;
+  string category = 5;
+  string imageUrl = 6;
+  bool isActive = 7;
+  string createdAt = 8;
+  string updatedAt = 9;
+}
